@@ -10,7 +10,16 @@ export default function SignIn() {
         password:''
     })
     const {email,password}=formData
-    const onSubmit=e=>e.preventDefault()
+    const onSubmit= async e=>{
+      e.preventDefault()
+      try{
+        await auth.signInWithEmailAndPassword(email,password)
+        setFormData({email:'',password:''})
+      }
+      catch(error){
+        console.error(error)
+      }
+    }
     onchange=e=>{setFormData((prev)=>({...prev,[e.target.name]:e.target.value}))}
   return (
       
