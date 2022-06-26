@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import CustomButton from '../custom-button/custom-button.component'
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
@@ -15,7 +15,7 @@ const CartDropdown = ({ cartItems,toggleCartHidden }) => {
     const routeChange = () =>{ 
       let path = '/checkout'; 
       navigate(path)
-      let toggle=toggleCartHidden
+      
         }
   
     return(
