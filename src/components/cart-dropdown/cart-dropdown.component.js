@@ -9,7 +9,8 @@ import { toggleCartHidden } from '../../redux/cart/cart.actions';
 //import {withRouter} from 'react-router-dom'
 import './cart-dropdown.styles.scss';
 
-const CartDropdown = ({ cartItems,toggleCartHidden }) => {
+const CartDropdown = ({ cartItems,dispatch}) => {
+  
    
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
@@ -34,16 +35,17 @@ const CartDropdown = ({ cartItems,toggleCartHidden }) => {
                       GO TO CHECKOUT
                     </Link>                   */}
                  
-                    <CustomButton onClick={routeChange}  >GO TO CHECKOUT</CustomButton>
+                    <CustomButton onClick={()=>{
+                      routeChange()
+                      dispatch(toggleCartHidden())
+                    }}  >GO TO CHECKOUT</CustomButton>
                 </div>
 )
     }
-    const mapDispatchToProps = dispatch => ({
-      toggleCartHidden: () => dispatch(toggleCartHidden())
-    });
+  
 const mapStateToProps = createStructuredSelector({
   cartItems:selectCartItems
   
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(CartDropdown);
+export default connect(mapStateToProps)(CartDropdown);
